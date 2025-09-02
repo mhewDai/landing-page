@@ -1,0 +1,227 @@
+---
+import type { Project } from '../types/project';
+
+export interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+
+// Extract unique technologies from all projects
+const allTech = [...new Set(projects.flatMap(project => project.tech))].sort();
+---
+
+<div class="bg-white border border-gray-200 rounded-lg p-6 mb-8 shadow-sm">
+  <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
+    <!-- Search Input -->
+    <div class="flex-1 min-w-0">
+      <label for="project-search" class="sr-only">Search projects</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="project-search"
+          class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
+          placeholder="Search projects..."
+        />
+      </div>
+    </div>
+    
+    <!-- Technology Filters -->
+    <div class="flex flex-wrap gap-2">
+      <span class="text-sm font-medium text-gray-700 mr-2 flex items-center">Filter by:</span>
+      <button
+        class="filter-tag active px-3 py-1 text-sm font-medium rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+        data-filter="all"
+      >
+        All
+      </button>
+      {allTech.map((tech) => (
+        <button
+          class="filter-tag px-3 py-1 text-sm font-medium rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+          data-filter={tech}
+        >
+          {tech}
+        </button>
+      ))}
+    </div>
+    
+    <!-- Clear Filters -->
+    <button
+      id="clear-filters"
+      class="hidden px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+    >
+      Clear Filters
+    </button>
+  </div>
+  
+  <!-- Active Filters Display -->
+  <div id="active-filters" class="hidden mt-4 pt-4 border-t border-gray-200">
+    <div class="flex flex-wrap gap-2 items-center">
+      <span class="text-sm text-gray-600">Active filters:</span>
+      <div id="active-filter-tags" class="flex flex-wrap gap-2"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .filter-tag {
+    @apply bg-gray-100 text-gray-700 border-gray-300;
+  }
+  
+  .filter-tag:hover {
+    @apply bg-gray-200 border-gray-400;
+  }
+  
+  .filter-tag.active {
+    @apply bg-primary-100 text-primary-800 border-primary-300;
+  }
+  
+  .filter-tag.active:hover {
+    @apply bg-primary-200 border-primary-400;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('project-search') as HTMLInputElement;
+    const filterTags = document.querySelectorAll('.filter-tag');
+    const clearFiltersBtn = document.getElementById('clear-filters');
+    const activeFiltersDiv = document.getElementById('active-filters');
+    const activeFilterTags = document.getElementById('active-filter-tags');
+    const projectCards = document.querySelectorAll('[data-project-card]');
+    
+    let activeFilters = new Set(['all']);
+    let searchTerm = '';
+    
+    // Search functionality
+    searchInput?.addEventListener('input', (e) => {
+      searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+      filterProjects();
+      updateUI();
+    });
+    
+    // Filter tag functionality
+    filterTags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const filter = tag.getAttribute('data-filter');
+        if (!filter) return;
+        
+        if (filter === 'all') {
+          activeFilters.clear();
+          activeFilters.add('all');
+        } else {
+          activeFilters.delete('all');
+          if (activeFilters.has(filter)) {
+            activeFilters.delete(filter);
+          } else {
+            activeFilters.add(filter);
+          }
+          
+          if (activeFilters.size === 0) {
+            activeFilters.add('all');
+          }
+        }
+        
+        filterProjects();
+        updateUI();
+      });
+    });
+    
+    // Clear filters functionality
+    clearFiltersBtn?.addEventListener('click', () => {
+      activeFilters.clear();
+      activeFilters.add('all');
+      searchTerm = '';
+      searchInput.value = '';
+      filterProjects();
+      updateUI();
+    });
+    
+    function filterProjects() {
+      projectCards.forEach(card => {
+        const projectElement = card as HTMLElement;
+        const projectTitle = projectElement.getAttribute('data-project-title')?.toLowerCase() || '';
+        const projectSummary = projectElement.getAttribute('data-project-summary')?.toLowerCase() || '';
+        const projectTech = projectElement.getAttribute('data-project-tech')?.split(',') || [];
+        
+        // Check search term
+        const matchesSearch = !searchTerm || 
+          projectTitle.includes(searchTerm) || 
+          projectSummary.includes(searchTerm);
+        
+        // Check technology filters
+        const matchesFilter = activeFilters.has('all') || 
+          projectTech.some(tech => activeFilters.has(tech.trim()));
+        
+        // Show/hide project card
+        if (matchesSearch && matchesFilter) {
+          projectElement.style.display = 'block';
+          projectElement.classList.remove('hidden');
+        } else {
+          projectElement.style.display = 'none';
+          projectElement.classList.add('hidden');
+        }
+      });
+    }
+    
+    function updateUI() {
+      // Update filter tag states
+      filterTags.forEach(tag => {
+        const filter = tag.getAttribute('data-filter');
+        if (filter && activeFilters.has(filter)) {
+          tag.classList.add('active');
+        } else {
+          tag.classList.remove('active');
+        }
+      });
+      
+      // Show/hide clear filters button
+      const hasActiveFilters = !activeFilters.has('all') || searchTerm;
+      if (hasActiveFilters) {
+        clearFiltersBtn?.classList.remove('hidden');
+      } else {
+        clearFiltersBtn?.classList.add('hidden');
+      }
+      
+      // Update active filters display
+      if (hasActiveFilters) {
+        activeFiltersDiv?.classList.remove('hidden');
+        updateActiveFilterTags();
+      } else {
+        activeFiltersDiv?.classList.add('hidden');
+      }
+    }
+    
+    function updateActiveFilterTags() {
+      if (!activeFilterTags) return;
+      
+      activeFilterTags.innerHTML = '';
+      
+      // Add search term if present
+      if (searchTerm) {
+        const searchTag = document.createElement('span');
+        searchTag.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800';
+        searchTag.innerHTML = `Search: "${searchTerm}"`;
+        activeFilterTags.appendChild(searchTag);
+      }
+      
+      // Add technology filters
+      activeFilters.forEach(filter => {
+        if (filter !== 'all') {
+          const filterTag = document.createElement('span');
+          filterTag.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800';
+          filterTag.textContent = filter;
+          activeFilterTags.appendChild(filterTag);
+        }
+      });
+    }
+    
+    // Initialize UI
+    updateUI();
+  });
+</script>

@@ -1,0 +1,7 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#fef3c7"/>
+  <rect x="50" y="50" width="300" height="200" fill="#fbbf24" rx="8"/>
+  <text x="200" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#92400e">JS</text>
+  <text x="200" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#92400e">JavaScript Exercise</text>
+  <text x="200" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#b45309">DOM & Arrays</text>
+</svg>

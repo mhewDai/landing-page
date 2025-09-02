@@ -1,0 +1,10 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f0f9ff"/>
+  <rect x="50" y="50" width="300" height="200" fill="#e0f2fe" rx="8"/>
+  <rect x="80" y="80" width="240" height="140" fill="white" rx="4"/>
+  <line x1="100" y1="110" x2="300" y2="110" stroke="#374151" stroke-width="2"/>
+  <line x1="100" y1="130" x2="280" y2="130" stroke="#6b7280" stroke-width="1"/>
+  <line x1="100" y1="150" x2="290" y2="150" stroke="#6b7280" stroke-width="1"/>
+  <line x1="100" y1="170" x2="260" y2="170" stroke="#6b7280" stroke-width="1"/>
+  <text x="200" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#0369a1">Research Paper</text>
+</svg>

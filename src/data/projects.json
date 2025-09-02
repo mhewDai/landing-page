@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "slug": "rag-chatbot",
+      "title": "RAG Chatbot",
+      "summary": "Retrieval-augmented QA system over custom corpus with FastAPI backend and interactive frontend.",
+      "description": "A sophisticated chatbot that uses Retrieval-Augmented Generation (RAG) to answer questions about custom documents. Built with Python FastAPI backend, OpenAI GPT integration, and Qdrant vector database for semantic search.",
+      "tech": ["Python", "FastAPI", "OpenAI", "Qdrant", "React", "TypeScript"],
+      "links": {
+        "demo": "https://rag-demo.yourdomain.com",
+        "code": "https://github.com/yourusername/rag-demo"
+      },
+      "badges": ["Live", "Backend API", "AI/ML"],
+      "cover": "./assets/images/rag-cover.svg",
+      "screenshots": [
+        "./assets/images/rag-screenshot-1.jpg",
+        "./assets/images/rag-screenshot-2.jpg"
+      ],
+      "featured": true,
+      "dateCreated": "2024-01-15"
+    },
+    {
+      "slug": "js-exercise",
+      "title": "JavaScript Exercise",
+      "summary": "Interactive DOM manipulation and array methods challenge with real-time feedback.",
+      "description": "A comprehensive JavaScript exercise demonstrating advanced DOM manipulation, array methods, and modern ES6+ features. Includes interactive examples and real-time code execution.",
+      "tech": ["HTML", "CSS", "JavaScript", "DOM API"],
+      "links": {
+        "demo": "/projects/js-exercise/index.html",
+        "code": "https://github.com/yourusername/js-exercise"
+      },
+      "badges": ["Interactive", "Educational"],
+      "cover": "./assets/images/js-cover.svg",
+      "screenshots": [
+        "./assets/images/js-screenshot-1.jpg"
+      ],
+      "featured": false,
+      "dateCreated": "2024-02-10"
+    },
+    {
+      "slug": "research-paper",
+      "title": "Research Paper: AI Applications",
+      "summary": "Co-authored research paper on novel applications of artificial intelligence in web development.",
+      "description": "Academic research exploring the intersection of AI and modern web development practices, with focus on automated code generation and intelligent user interfaces.",
+      "tech": ["Research", "AI/ML", "Academic Writing"],
+      "links": {
+        "pdf": "/papers/ai-web-development-research.pdf",
+        "citation": "https://doi.org/10.1000/example"
+      },
+      "badges": ["Published", "Academic"],
+      "cover": "./assets/images/paper-cover.svg",
+      "screenshots": [],
+      "featured": true,
+      "dateCreated": "2023-11-20",
+      "fileSize": "2.3 MB"
+    }
+  ]
+}
