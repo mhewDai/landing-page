@@ -1,0 +1,179 @@
+---
+import Layout from '../components/Layout.astro';
+---
+
+<Layout title="About - AI Developer & Researcher">
+  <!-- Hero Section -->
+  <section class="py-20 bg-gradient-to-br from-primary-50 to-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+          About Me
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Passionate about creating intelligent solutions that make a difference
+        </p>
+      </div>
+      
+      <!-- Profile Image -->
+      <div class="flex justify-center mb-12">
+        <div class="w-48 h-48 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
+          <svg class="w-24 h-24 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg mx-auto text-gray-600">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Professional Background</h2>
+        
+        <p class="text-lg leading-relaxed mb-6">
+          I'm a full-stack developer and AI researcher with a passion for building 
+          intelligent applications that solve real-world problems. My work spans 
+          modern web technologies, machine learning, and academic research, with a 
+          focus on creating scalable, user-centered solutions.
+        </p>
+        
+        <p class="text-lg leading-relaxed mb-6">
+          With expertise in Python, FastAPI, React, and TypeScript, I create 
+          applications that leverage the latest in AI and machine learning. My 
+          approach combines technical excellence with practical problem-solving, 
+          ensuring that complex technologies are accessible and useful to end users.
+        </p>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-12">Technical Expertise</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div>
+            <h4 class="text-xl font-semibold text-gray-900 mb-3">Frontend Development</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
+                React & TypeScript
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
+                Astro & Static Site Generation
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
+                Tailwind CSS & Responsive Design
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
+                Modern JavaScript (ES6+)
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-xl font-semibold text-gray-900 mb-3">Backend & AI</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
+                Python & FastAPI
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
+                Machine Learning & AI Integration
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
+                Vector Databases (Qdrant)
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
+                OpenAI API & RAG Systems
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Research & Innovation</h3>
+        
+        <p class="text-lg leading-relaxed mb-6">
+          My research focuses on practical applications of artificial intelligence 
+          in web development and user experience design. I'm particularly interested 
+          in how AI can enhance developer productivity and create more intuitive 
+          user interfaces.
+        </p>
+        
+        <p class="text-lg leading-relaxed mb-6">
+          Recent work includes developing retrieval-augmented generation systems 
+          for domain-specific knowledge bases and exploring novel approaches to 
+          automated code generation and testing.
+        </p>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Beyond Code</h3>
+        
+        <p class="text-lg leading-relaxed mb-6">
+          When I'm not coding, you can find me contributing to open-source projects, 
+          writing technical articles, or exploring the latest developments in AI and 
+          machine learning. I believe in continuous learning and sharing knowledge 
+          with the developer community.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          I'm always excited to collaborate on innovative projects and explore new 
+          technologies. Whether you're looking to build an AI-powered application 
+          or need expertise in modern web development, I'd love to discuss how we 
+          can work together.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Skills & Technologies</h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        {[
+          'Python', 'TypeScript', 'React', 'FastAPI', 'Astro', 'Tailwind CSS',
+          'OpenAI', 'Qdrant', 'Git', 'Docker', 'AWS', 'Node.js'
+        ].map((skill) => (
+          <div class="bg-white rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
+            <span class="text-sm font-medium text-gray-900">{skill}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Let's Build Something Amazing Together
+      </h2>
+      <p class="text-xl text-gray-600 mb-8">
+        Ready to discuss your next project or explore collaboration opportunities?
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a 
+          href="mailto:your.email@example.com"
+          class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors shadow-lg hover:shadow-xl"
+        >
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          Get In Touch
+        </a>
+        
+        <a 
+          href="/#projects"
+          class="inline-flex items-center px-8 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors shadow-md hover:shadow-lg"
+        >
+          View My Work
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
